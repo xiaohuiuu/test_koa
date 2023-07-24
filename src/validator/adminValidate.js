@@ -2,12 +2,12 @@
 
 
 
-const registerValidate = ()=>{
-
+const registerValidate = (ctx)=>{
+    console.log('我是admin的注册的数据校验')
 }
 
-const loginValidate = ()=>{
-    
+const loginValidate = (ctx)=>{
+    console.log('我是admin的登陆的数据校验')
 }
 
 

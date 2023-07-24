@@ -1,7 +1,8 @@
 const KoaRouter = require('@koa/router')
 const md5 = require('md5')
 const connect= require('../mysql/sql')
-const {findAll} = require('../controller/user')
+const {findAll} = require('../controller/userController')
+
 
 
 const router = new KoaRouter()
@@ -42,7 +43,7 @@ router.get('/',async(ctx,next)=>{
 
 //
 router.get('/test',(ctx,next)=>{
-    ctx.body = 'hello world'
+    
 })
 
 
