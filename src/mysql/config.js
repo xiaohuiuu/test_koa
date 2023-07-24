@@ -2,7 +2,7 @@ const config = {
     host:'localhost',
     user:'root',
     database:'project1',
-    password:'197413',
+    password:'AQsx14123456',
     port:3306
 }
 
