@@ -48,7 +48,7 @@ const user = sequelize.define('user', {
 
 
 // 同步模型和数据库
-user.sync({ force: false,alter:true }).then(() => {
+user.sync({ force: true,alter:true }).then(() => {
     console.log('User model synced with database.');
 }).catch(err => {
     console.error('Error syncing User model:', err);

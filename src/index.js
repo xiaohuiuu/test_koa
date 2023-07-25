@@ -1,16 +1,18 @@
 const Koa = require('koa')
-const index = require('./routes/index')
-const user = require('./routes/user')
+const user = require('./routes/userRouter')
 const bodyParse = require('koa-bodyparser')
+const bouncer = require('koa-bouncer')
 const cors = require('@koa/cors')
 const onError = require('koa-onerror')
 const logger = require('koa-logger')
 const _static = require('koa-static')
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/adminRouter')
 const {errout} = require('./untils/errout')
+
 
 const app = new Koa()
 
+app.use(bouncer.middleware())
 app.use(bodyParse())
 app.use(cors())
 app.use(logger())

@@ -1,11 +1,20 @@
 const { registerValidate, loginValidate } = require('../validator/adminValidate')
+const jwt = require('koa-jsonwebtoken')
+const jwtAuth = require('koa-jwt')
 const adminModel = require('../model/adminModel')
+
+
+// token密钥
+const secret = 'xujinlong'
 
 
 const register = async (ctx) => {
 
     // 1. 先进行数据校验，通过往下走
-    registerValidate(ctx)
+    let datavalidate =  registerValidate(ctx)
+    if(!datavalidate){  //如果返回false，验证未通过，不执行下面的代码
+        return
+    }
     // 2. 通过校验后，获取用户名和密码
     let { username, password } = ctx.request.body
     // 3. 判断数据库中有没有重名的
@@ -15,10 +24,10 @@ const register = async (ctx) => {
             username: username
         }
     })
-    console.log(res)
+    //console.log(res)
 
     if (res.length === 0) {
-        await adminModel.create({
+         adminModel.create({
             username: username,
             password: password
         })
