@@ -14,18 +14,22 @@ const admin = sequelize.define('Admin',{
         unique:true,
         primaryKey:true,
         allowNull:false,
-        len:[1,16],
-        autoIncrement:true
+        autoIncrement:true,
+        
     },
     username:{
         type:DataTypes.STRING(16),
         unique:true,
         allowNull:false,
-        len:[4,16]
+        validate:{
+            len:[4,16]
+        }
     },
     password:{
         type:DataTypes.STRING(20),
-        len:[6,20]
+        validate:{
+            len:[6,20]
+        }
     }
 }, {
     timestamps: false

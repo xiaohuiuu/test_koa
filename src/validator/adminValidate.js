@@ -34,6 +34,8 @@ const registerValidate = (ctx) => {
 
 }
 
+
+//登陆验证
 const loginValidate = (ctx) => {
     console.log('我是admin的登陆的数据校验')
 }

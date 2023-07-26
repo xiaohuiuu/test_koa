@@ -1,7 +1,8 @@
 const KoaRouter = require('@koa/router')
 const md5 = require('md5')
-const connect= require('../mysql/sql')
-const {findAll} = require('../controller/userController')
+const connect = require('../mysql/sql')
+const {register,login} = require('../controller/userController')
+
 
 
 
@@ -32,18 +33,16 @@ router.prefix('/user')
 
 
 
-//sequelize的连接方法
-router.get('/',async(ctx,next)=>{
-    let data = await findAll()
-    ctx.body = JSON.stringify({
-        message:'success',
-        data:data
-    })
+//用户注册
+router.post('/register',async (ctx, next) => {
+    await register(ctx)
 })
 
-//
-router.get('/test',(ctx,next)=>{
-    
+
+
+//用户登陆
+router.post('/login', async (ctx, next) => {
+    await login(ctx)
 })
 
 
